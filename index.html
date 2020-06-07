@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <style>
+      * {font-size: 20px; font-family: sans-serif; background: #222; color: #f5f5f5;}
+      button {border-style: solid; border-radius: 2px; opacity: 0.5}
+    </style>
+  <body>
+    <div><button>reset</button><span id="display"></span></div>
+    <script>
+      let startTime = new Date
+      let tick = function() {
+	let now = new Date
+	let ms = now - startTime
+	let s = ms / 1000 | 0
+	let min = s / 60 | 0
+	$("#display").text(" Time since last enemy crit: " + min + "m" + (s%60) + "s.")
+	requestAnimationFrame(tick)
+      }
+      tick()
+      $("button").click(function(e){
+	startTime = new Date
+      })
+    </script>
+  </body>
+</html>
